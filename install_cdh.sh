@@ -11,6 +11,16 @@ EOL'
 
 curl -s http://archive.cloudera.com/cdh5/ubuntu/precise/amd64/cdh/archive.key | sudo apt-key add -
 
+sudo bash -c 'cat > /etc/apt/preferences << EOL
+Package: *
+Pin: release n=trusty
+Pin-Priority: 100
+
+Package: *
+Pin: release n=precise-cdh5
+Pin-Priority: 600
+EOL'
+
 sudo apt-get update
 
 sudo dpkg -i /tmp/zookeeper.deb
